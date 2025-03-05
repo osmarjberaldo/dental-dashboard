@@ -28,7 +28,8 @@ export function UserForm({ onCancel, user }: UserFormProps) {
   const [name, setName] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
   const [role, setRole] = useState(user?.role || "patient");
-  const [isActive, setIsActive] = useState(user?.status === "active" || true);
+  // Fix: Change the type to boolean instead of having an implicit type of true
+  const [isActive, setIsActive] = useState<boolean>(user?.status === "active" || true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,7 +104,7 @@ export function UserForm({ onCancel, user }: UserFormProps) {
             <Switch
               id="status"
               checked={isActive}
-              onCheckedChange={(checked: boolean) => setIsActive(checked)}
+              onCheckedChange={setIsActive} 
             />
             <Label htmlFor="status" className="cursor-pointer">
               {isActive ? "Active" : "Inactive"}
