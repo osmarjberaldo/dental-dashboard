@@ -103,7 +103,7 @@ export function UserForm({ onCancel, user }: UserFormProps) {
             <Switch
               id="status"
               checked={isActive}
-              onCheckedChange={setIsActive}
+              onCheckedChange={(checked: boolean) => setIsActive(checked)}
             />
             <Label htmlFor="status" className="cursor-pointer">
               {isActive ? "Active" : "Inactive"}
