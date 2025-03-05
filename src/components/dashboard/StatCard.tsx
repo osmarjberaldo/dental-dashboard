@@ -1,66 +1,62 @@
 
+import React from 'react';
+import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Icon } from "lucide-react";
-import { CSSProperties } from "react";
+import { ArrowUpIcon, ArrowDownIcon, LucideIcon } from 'lucide-react';
 
-type StatCardProps = {
+interface StatCardProps {
   title: string;
   value: string | number;
   change?: {
-    value: string | number;
-    type: "increase" | "decrease";
+    value: string;
+    type: 'increase' | 'decrease';
   };
-  icon: Icon;
+  icon: LucideIcon;
   iconClass?: string;
   iconBgClass?: string;
-  valueSuffix?: string;
   className?: string;
-  style?: CSSProperties;
-};
+  style?: React.CSSProperties;
+}
 
-export function StatCard({
-  title,
-  value,
-  change,
+export function StatCard({ 
+  title, 
+  value, 
+  change, 
   icon: Icon,
   iconClass,
-  iconBgClass = "bg-dental-primary/10",
-  valueSuffix,
+  iconBgClass = "bg-primary/10",
   className,
-  style,
+  style
 }: StatCardProps) {
   return (
-    <div 
-      className={cn(
-        "bg-white rounded-xl p-6 shadow-sm border border-border animate-fade-up card-hover",
-        className
-      )}
-      style={style}
-    >
-      <div className="flex justify-between items-start">
-        <div>
+    <Card className={cn("shadow-sm animate-fade-up", className)} style={style}>
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-muted-foreground">{title}</p>
-          <div className="mt-2 flex items-baseline">
-            <h3 className="text-2xl font-bold">{value}</h3>
-            {valueSuffix && <span className="ml-1 text-sm text-muted-foreground">{valueSuffix}</span>}
+          <div className={cn("p-2 rounded-full", iconBgClass)}>
+            <Icon className={cn("h-5 w-5", iconClass)} />
           </div>
+        </div>
+        <div className="mt-2">
+          <h3 className="text-2xl font-bold">{value}</h3>
+          
           {change && (
-            <div className="mt-1">
+            <div className="flex items-center mt-1">
+              {change.type === 'increase' ? (
+                <ArrowUpIcon className="h-4 w-4 text-emerald-500 mr-1" />
+              ) : (
+                <ArrowDownIcon className="h-4 w-4 text-red-500 mr-1" />
+              )}
               <span className={cn(
-                "text-xs font-medium",
-                change.type === "increase" ? "text-emerald-600" : "text-red-600"
+                "text-sm font-medium",
+                change.type === 'increase' ? "text-emerald-500" : "text-red-500"
               )}>
-                {change.type === "increase" ? "+" : "-"}
-                {change.value}
+                {change.value} {change.type === 'increase' ? 'more' : 'less'}
               </span>
-              <span className="ml-1 text-xs text-muted-foreground">from last month</span>
             </div>
           )}
         </div>
-        <div className={cn("p-3 rounded-full", iconBgClass)}>
-          <Icon className={cn("h-5 w-5 text-dental-primary", iconClass)} />
-        </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

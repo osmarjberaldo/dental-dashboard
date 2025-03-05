@@ -111,28 +111,28 @@ const Index = () => {
                     <div className="w-3 h-3 rounded-full bg-emerald-500" />
                     <span className="text-sm font-medium">Appointment System</span>
                   </div>
-                  <Badge variant="success">Operational</Badge>
+                  <Badge variant="default" className="bg-emerald-500 hover:bg-emerald-600">Operational</Badge>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-emerald-500" />
                     <span className="text-sm font-medium">Payment Processing</span>
                   </div>
-                  <Badge variant="success">Operational</Badge>
+                  <Badge variant="default" className="bg-emerald-500 hover:bg-emerald-600">Operational</Badge>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-emerald-500" />
                     <span className="text-sm font-medium">Notification Services</span>
                   </div>
-                  <Badge variant="success">Operational</Badge>
+                  <Badge variant="default" className="bg-emerald-500 hover:bg-emerald-600">Operational</Badge>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-amber-500" />
                     <span className="text-sm font-medium">Report Generation</span>
                   </div>
-                  <Badge variant="warning">Degraded</Badge>
+                  <Badge variant="outline" className="text-amber-500 border-amber-500">Degraded</Badge>
                 </div>
               </div>
             </CardContent>
